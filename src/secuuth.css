@@ -1,0 +1,111 @@
+.logo {
+  width: 231px;
+  object-fit: cover;
+}
+
+.su-ip-text {
+  outline: none;
+  border: 1px solid #d9e0e3;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 12px 7px;
+}
+
+.su-ip-text:focus {
+  border: 1px solid blue;
+}
+
+.su-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 12px 7px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.su-title {
+  font-size: larger;
+  margin: 12px 20px;
+  font-weight: bolder;
+}
+
+#su-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(245, 245, 245, 0.9);
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner animation */
+
+#su-cover-spin {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  display: block;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#su-cover-spin::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: transparent;
+  border-width: 4px;
+  border-radius: 50%;
+  -webkit-animation: spin 0.8s linear infinite;
+  animation: spin 0.8s linear infinite;
+}
+
+.su-tick {
+  width: 60%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
