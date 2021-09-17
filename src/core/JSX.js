@@ -5,7 +5,7 @@ export default class JSX {
     this.fields = fields
   }
 
-  static getJSX(profile, onSubmit) {
+  static getJSX(profile, containerId, onSubmit) {
     const { basicStyling, advancedStyling } = profile
 
     const { isSms, countryCode } = basicStyling
@@ -29,55 +29,55 @@ export default class JSX {
 
     if (onSubmit) {
       return (
-        <React.Fragment>
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+            padding: '50px 20px',
+            borderRadius: '12px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            backgroundColor: `rgba(${modalBackgroundColor.color.r},${modalBackgroundColor.color.g},${modalBackgroundColor.color.b},${modalBackgroundColor.color.a})`,
+            position: 'relative'
+          }}
+          id={containerId}
+        >
+          <img
+            src={
+              logo ||
+              'https://uploads-ssl.webflow.com/61234975b500ae0500a02f42/6123751c35c797119be587e3_Screenshot%20(275)%203-p-500.png'
+            }
+            alt='logo'
+            className='logo'
+          />
           <div
+            className='su-title'
             style={{
-              height: '100%',
-              width: '100%',
-              padding: '50px 20px',
-              borderRadius: '12px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              backgroundColor: `rgba(${modalBackgroundColor.color.r},${modalBackgroundColor.color.g},${modalBackgroundColor.color.b},${modalBackgroundColor.color.a})`
+              color: modalTitleColor.hex || 'black'
             }}
           >
-            <img
-              src={
-                logo ||
-                'https://uploads-ssl.webflow.com/61234975b500ae0500a02f42/6123751c35c797119be587e3_Screenshot%20(275)%203-p-500.png'
-              }
-              alt='logo'
-              className='logo'
-            />
-            <div
-              className='su-title'
-              style={{
-                color: modalTitleColor.hex || 'black'
-              }}
-            >
-              {modalTitle}
-            </div>
-            <input
-              type={signInMode ? `number` : `text`}
-              className='su-ip-text'
-              id='suipemailp'
-              placeholder={placeholder}
-            />
-            <button
-              className='su-btn'
-              id='su-submit-btn'
-              style={{
-                backgroundColor: `rgba(${btnBgColor.color.r},${btnBgColor.color.g},${btnBgColor.color.b},${btnBgColor.color.a})`,
-                color: btnTextColor.hex || 'white'
-              }}
-              onClick={() => onSubmit()}
-            >
-              {btnText}
-            </button>
-            <p id='su-msg'></p>
+            {modalTitle}
           </div>
-        </React.Fragment>
+          <input
+            type={signInMode ? `number` : `text`}
+            className='su-ip-text'
+            id='suipemailp'
+            placeholder={placeholder}
+          />
+          <button
+            className='su-btn'
+            id='su-submit-btn'
+            style={{
+              backgroundColor: `rgba(${btnBgColor.color.r},${btnBgColor.color.g},${btnBgColor.color.b},${btnBgColor.color.a})`,
+              color: btnTextColor.hex || 'white'
+            }}
+            onClick={() => onSubmit()}
+          >
+            {btnText}
+          </button>
+          <p id='su-msg'></p>
+        </div>
       )
     } else {
       return `

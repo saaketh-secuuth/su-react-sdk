@@ -3,7 +3,7 @@ import { getProfile } from './core/API'
 import JSX from './core/JSX'
 import { CSSURL } from './core/constants'
 
-function Form({ keyId, profileName, onSubmit }) {
+function Form({ keyId, profileName, onSubmit, containerId }) {
   const [profile, setProfle] = React.useState(null)
   React.useEffect(() => {
     document.getElementsByTagName('head')[0].innerHTML += `
@@ -22,7 +22,7 @@ function Form({ keyId, profileName, onSubmit }) {
 
   return (
     <React.Fragment>
-      {profile && JSX.getJSX(profile.profileMetaData, onSubmit)}
+      {profile && JSX.getJSX(profile.profileMetaData, containerId, onSubmit)}
     </React.Fragment>
   )
 }
