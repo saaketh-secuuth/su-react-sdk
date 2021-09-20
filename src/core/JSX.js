@@ -27,76 +27,57 @@ export default class JSX {
       placeholder = 'Email'
     }
 
-    if (onSubmit) {
-      return (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            padding: '50px 20px',
-            borderRadius: '12px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundColor: `rgba(${modalBackgroundColor.color.r},${modalBackgroundColor.color.g},${modalBackgroundColor.color.b},${modalBackgroundColor.color.a})`,
-            position: 'relative'
-          }}
-          id={containerId}
-        >
-          <img
-            src={
-              logo ||
-              'https://uploads-ssl.webflow.com/61234975b500ae0500a02f42/6123751c35c797119be587e3_Screenshot%20(275)%203-p-500.png'
-            }
-            alt='logo'
-            className='logo'
-          />
-          <div
-            className='su-title'
-            style={{
-              color: modalTitleColor.hex || 'black'
-            }}
-          >
-            {modalTitle}
-          </div>
-          <input
-            type={signInMode ? `number` : `text`}
-            className='su-ip-text'
-            id='suipemailp'
-            placeholder={placeholder}
-          />
-          <button
-            className='su-btn'
-            id='su-submit-btn'
-            style={{
-              backgroundColor: `rgba(${btnBgColor.color.r},${btnBgColor.color.g},${btnBgColor.color.b},${btnBgColor.color.a})`,
-              color: btnTextColor.hex || 'white'
-            }}
-            onClick={() => onSubmit()}
-          >
-            {btnText}
-          </button>
-          <p id='su-msg'></p>
-        </div>
-      )
-    } else {
-      return `
+    return (
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          padding: '50px 20px',
+          borderRadius: '12px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: `rgba(${modalBackgroundColor.color.r},${modalBackgroundColor.color.g},${modalBackgroundColor.color.b},${modalBackgroundColor.color.a})`,
+          position: 'relative'
+        }}
+        id={containerId}
+      >
         <img
-          src="${
+          src={
             logo ||
             'https://uploads-ssl.webflow.com/61234975b500ae0500a02f42/6123751c35c797119be587e3_Screenshot%20(275)%203-p-500.png'
-          }"
-          alt="logo"
-          class="logo"
+          }
+          alt='logo'
+          className='logo'
         />
-        <div class="su-title">${modalTitle}</div>
-        <input ${
-          signInMode ? `type="number"` : `type="text"`
-        }  class="su-ip-text" id="suipemailp" id="suipemailp"  placeholder="${placeholder}" />
-        <button class="su-btn" id="su-submit-btn">${btnText}</button>
-        <p id="su-msg"></p>
-    `
-    }
+        <div
+          className='su-title'
+          style={{
+            color: modalTitleColor.hex || 'black'
+          }}
+        >
+          {modalTitle}
+        </div>
+        <input
+          type={signInMode ? `number` : `text`}
+          className='su-ip-text'
+          id='suipemailp'
+          placeholder={placeholder}
+        />
+        <button
+          className='su-btn'
+          id='su-submit-btn'
+          style={{
+            backgroundColor: `rgba(${btnBgColor.color.r},${btnBgColor.color.g},${btnBgColor.color.b},${btnBgColor.color.a})`,
+            color: btnTextColor.hex || 'white'
+          }}
+          onClick={() => onSubmit()}
+        >
+          {btnText}
+        </button>
+        <p id='su-msg'></p>
+      </div>
+    )
   }
 
   async formHTMLControls(field) {
