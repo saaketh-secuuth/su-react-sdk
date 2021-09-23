@@ -1,24 +1,13 @@
 import React from 'react'
-import { getProfile } from './core/API'
-import JSX from './core/JSX'
-import { CSSURL } from './core/constants'
+import JSX from './JSX'
+import { CSSURL } from 'sdk-core'
 
-function Form({ keyId, profileName, onSubmit, containerId }) {
-  const [profile, setProfle] = React.useState(null)
+function Form({ profile, onSubmit, containerId }) {
   React.useEffect(() => {
     document.getElementsByTagName('head')[0].innerHTML += `
     <link rel="stylesheet" href="${CSSURL}" />
     `
   }, [])
-  React.useEffect(() => {
-    ;(async () => {
-      const prof = await getProfile(keyId, profileName)
-      setProfle({
-        ...prof,
-        profileMetaData: { ...JSON.parse(prof.profileMetaData) }
-      })
-    })()
-  }, [keyId, profileName])
 
   return (
     <React.Fragment>

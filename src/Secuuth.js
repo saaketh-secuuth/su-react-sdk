@@ -1,7 +1,6 @@
 import React from 'react'
 import Form from './Form'
-import { getProfile } from './core/API'
-import SecAuthentication from './core/Authentication'
+import { getProfile, SecAuthentication } from 'sdk-core/'
 
 function Secuuth({ config }) {
   const { containerId, keyId, onSubmit, profileName } = config
@@ -20,8 +19,9 @@ function Secuuth({ config }) {
   const clickHandler = async () => {
     const email = document.getElementById('suipemailp').value
 
-    const { profileMetaData } = await getProfile(keyId, profileName)
-    const { magicLinkPromptConfig } = JSON.parse(profileMetaData)
+    const { profileMetaData } = profile
+    const { magicLinkPromptConfig } = profileMetaData
+
     const { logo, subHeading, heading } = magicLinkPromptConfig
 
     const mountPoint = document.getElementById(containerId)
@@ -79,12 +79,7 @@ function Secuuth({ config }) {
   }
 
   return (
-    <Form
-      keyId={keyId}
-      profileName={profileName}
-      onSubmit={clickHandler}
-      containerId={containerId}
-    />
+    <Form profile={profile} onSubmit={clickHandler} containerId={containerId} />
   )
 }
 
