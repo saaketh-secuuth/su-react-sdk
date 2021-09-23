@@ -24,7 +24,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "sdk-core": "github:saaketh-secuuth/su-sdk-core"
   },
   "devDependencies": {
     "microbundle-crl": "^0.13.10",
